@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT</title>
+    <link rel="shortcut icon" href="https://cdn.oaistatic.com/assets/favicon-32x32-p4ktpm1x.webp" type="image/x-icon">
+
+    <style>
+      body{
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol; 
+      }
+
+      .login {
+        background-color: black;
+        color: white;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight:600;
+        font-size: 14px;
+        width: 65px;
+        height: 32px;
+        border: none;
+        border-radius: 20px;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+      }
+
+      .createacct {
+        background-color: white;
+        color: black;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight: 600;
+        font-size: 14px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        width: 120px;
+        height: 32px;
+        border-radius: 20px;
+        margin-left: 8px;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+      }
+
+      .createacct:hover {
+        background-color: whitesmoke;
+      }
+
+      .sign {
+        position: absolute;
+        display: flex;
+        margin-left: 800px;
+        top: -60%;
+        margin-top: 5px;
+      }
+
+      .newdiv {
+        position: absolute;
+        top: 10px;
+        left: 13px;
+      }
+
+      .newbut {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+      }
+
+      .newimg {
+        top: 8px;
+        left: 7px;
+      }
+
+      .newbut:hover {
+        background-color: whitesmoke;
+      }
+
+      .addiv {
+        position: absolute;
+        top: 11px;
+        left: 55px;
+      }
+
+      .adbut {
+        width: 180px;
+        height: 38px;
+        border: none;
+        border-radius: 8px;
+        background-color: white;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+        font-weight: 500;
+        font-size: large;
+        color: grey
+      }
+
+      .adbut:hover {
+        background-color: whitesmoke;
+      }
+
+      .center {
+        border: none;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .para {
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        font-size: 30px;
+        font-weight: 550;
+        text-align: center;
+      }
+
+      input {
+        display: flex;
+        border: none;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: whitesmoke;
+        width: 750px;
+        height: 50px;
+        position: relative;
+        padding-left: 15px;
+        border-radius: 30px;
+        text-align:left;
+        font-size: 15px;
+      }
+
+      .promptdiv {
+        position: absolute;
+        right: 0;
+        top: 0;
+        align-content: center;
+        justify-content: center;
+      }
+
+      .prompt {
+        height: 34px;
+        width: 34px;
+        border-radius: 50%;
+        position: absolute;
+        border: none;
+        background-color: rgb(203, 203, 203);
+        right: 11px;
+        top: 108px;
+      }
+
+      .prompt:hover {
+        background-color: black;
+      }
+
+      img {
+        position: absolute;
+        top: 5px;
+        right: -8px;
+      }
+
+      .input {
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-content: center;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        margin-top: 25px;
+        position: relative;
+      }
+
+      .Brainstorm {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 100px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        padding: 10px;
+        transition-duration: 0.9s;
+        text-decoration: none;
+        text-align: right;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+      }
+
+      .braindiv {
+        position: relative;
+      }
+
+      .brainimg {
+        position: absolute;
+        left: 0;
+        top: 11px;
+        padding-left: 2px;
+      }
+
+      .Brainstorm:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .helpwrite {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 130px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        transition-duration: 0.9s;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .helpdiv {
+        position: relative;
+      }
+
+      .helpimg {
+        position: absolute;
+        left: 5px;
+        top: 13px;
+        margin-left: 5px;
+      }
+
+      .helpwrite:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .Code {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 80px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        transition-duration: 0.3s;
+        text-decoration: none;
+        text-align:end;
+        justify-content: center;
+        align-content: center;
+        padding-right: 12px;
+        position: relative;
+      }
+
+      .codediv {
+        position: relative;
+      }
+
+      .codeimg {
+        position: absolute;
+        left: 5px;
+        top: 11px;
+        margin-left: 5px;
+      }
+
+      .Code:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .Summarise {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 140px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        transition-duration: 0.3s;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .summdiv {
+        position: relative;
+      }
+
+      .summimg {
+        position: absolute;
+        left: 12px;
+        top: 11px;
+      }
+
+      .Summarise:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .advice {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 110px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        transition-duration: 0.3s;
+        text-decoration: none;
+        text-align: right;
+        justify-content: center;
+        align-content: center;
+        padding-right: 11px;
+        position: relative;
+      }
+
+      .advdiv {
+        position: relative;
+      }
+
+      .advimg {
+        position: absolute;
+        left: 5px;
+        top: 11px;
+        margin-left: 4px;
+      }
+
+      .advice:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .More {
+        font-size: 14px;
+        font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;;
+        background-color: rgba(0, 0, 0, 0);
+        color: grey;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, .05), 0 4px 6px 0 rgba(0, 0, 0, .02);
+        width: 60px;
+        height: 42px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+        border-radius: 21px;
+        transition-duration: 0.3s;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+      }
+
+      .More:hover {
+        background-color: rgba(181, 181, 181, 0.1);
+      }
+
+      .para2 {
+        color: grey;
+        text-align: center;
+        font-size: smaller;
+        margin-top: 30px;
+      }
+
+      a {
+        color: black;
+      }
+
+      .questdiv {
+        position: relative; 
+      }
+
+      .quest {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: none;
+        right: 5px;
+        top: 600px;
+      }
+
+      .questimg {
+        position: absolute;
+        left: 5px;
+      }
+     
+    </style>
+  </head>
+
+  <body>
+
+    <div class="newdiv">
+      <button class="newbut">
+        <img class="newimg" src="imagesgpt\write2-svgrepo-com.svg" alt="" width="25px" height="25px">
+      </button>
+    </div>
+
+    <div class="addiv">
+      <button class="adbut">ChatGPT 4o mini</button>
+    </div>
+
+    <div class="center">
+
+      <p class="para">What can I help you with?</p>
+
+      <div class="input">
+        <input type="search" placeholder="Message ChatGPT">
+      
+            <div class="promptdiv">
+              <button class="prompt">
+                <img src="imagesgpt\up-arrowwhite-svgrepo-com.svg" alt="prompt" width="50px" height="25px">
+              </button>
+            </div>
+          
+      </div>
+
+      
+
+      <div class="sign">
+        <a class="login" href="gptlogin.html">Log in</a>
+        <a class="createacct" href="gptcreateacct">Create account</a>
+      </div>    
+
+      <div class="buttons">
+        
+        <div class="helpdiv">
+          <button class="helpwrite">Help me write</button>
+          <img class="helpimg" src="imagesgpt\write-svgrepo-com (1).svg" alt="helpwrite" width="20px" height="17px">
+        </div>
+        
+        <div class="advdiv">
+          <button class="advice">Get advice</button>
+          <img class="advimg" src="imagesgpt\graduation-cap-svgrepo-com.svg" alt="advice" width="20px" height="20px">
+        </div>
+        
+        <div class="codediv">
+          <button class="Code">Code</button>
+          <img class="codeimg" src="imagesgpt\code-svgrepo-com.svg" alt="code" width="20px" height="20px">
+        </div>
+
+        <div>
+          <button class="More">More</button>
+        </div>
+        
+        <div class="braindiv">
+          <button class="Brainstorm">Brainstorm</button>
+          <img class="brainimg" src="imagesgpt\light-bulb-svgrepo-com.svg" alt="brainstorm" width="20px" height="20px">
+        </div>
+
+        <div class="summdiv">
+          <button class="Summarise">Summarise text</button>
+          <img class="summimg" src="imagesgpt\note-01-svgrepo-com.svg" alt="Summarise" width="20px" height="20px">
+        </div>
+        
+      </div>
+
+      <p class="para2">By messaging ChatGPT, 
+         you agree to our <a href="https://openai.com/en-GB/policies/terms-of-use/" target="_blank">Terms</a> and 
+        have read our <a href="https://openai.com/policies/privacy-policy/" target="_blank">Privacy Policy</a>.
+      </p>
+    </div>
+
+    
+    
+    
+    <!--<div class="ref">
+      <a href="https://www.freepik.com/search">Icon by iconading</a>
+    </div>-->
+
+    <div class="questdiv">
+      <button class="quest">
+        <img class="questimg" src="imagesgpt\question-mark-svgrepo-com.svg" alt="enquiry" width="10px" height="10px">
+      </button>
+    </div>
+
+  </body>
+</html>
